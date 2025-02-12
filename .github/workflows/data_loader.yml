@@ -30,7 +30,7 @@ jobs:
           pip install untangle pandas pyproj transx2gtfs
 
       - name: Download input zip
-        run: curl -L -o input.zip "${{ github.event.inputs.url }}"
+        run: curl -L -o input.zip "${{ secrets.timetableURL }}"
 
       - name: Convert to GTFS
         run: |

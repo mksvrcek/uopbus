@@ -2,10 +2,6 @@ name: Convert TransXChange to GTFS
 
 on:
   workflow_dispatch:
-    inputs:
-      url:
-        description: 'URL of the TransXChange zip file'
-        required: true
 
 jobs:
   convert:

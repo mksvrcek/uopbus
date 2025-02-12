@@ -7,7 +7,7 @@ jobs:
   convert:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Required to push changes back to the repository
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -20,7 +20,10 @@ jobs:
         with:
           python-version: '3.8'
 
-      - name: Install dependencies
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y unzip zip
+
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install untangle pandas pyproj transx2gtfs
@@ -28,14 +31,32 @@ jobs:
       - name: Download input zip
         run: curl -L -o input.zip "${{ secrets.timetableURL }}"
 
+      - name: Filter input files (U1/U2 only)
+        run: |
+          mkdir -p tmp_input
+          unzip input.zip -d tmp_input/
+          cd tmp_input
+          # Delete non-U1/U2 files
+          find . -type f ! -name 'U1*' ! -name 'U2*' -delete
+          # Remove empty directories
+          find . -type d -empty -delete
+          # Check if any files remain
+          if [ -z "$(find . -type f)" ]; then
+            echo "Error: No files starting with U1/U2 found in input"
+            exit 1
+          fi
+          zip -r ../filtered_input.zip *
+          cd ..
+          rm -rf tmp_input input.zip
+
       - name: Convert to GTFS
         run: |
-          python -c "import transx2gtfs; transx2gtfs.convert('input.zip', 'gtfs.zip')"
+          python -c "import transx2gtfs; transx2gtfs.convert('filtered_input.zip', 'gtfs.zip')"
 
       - name: Commit and push changes
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
           git add gtfs.zip
-          git commit -m "Update GTFS file"
+          git commit -m "Update GTFS file (filtered U1/U2 sources)"
           git push

@@ -59,7 +59,7 @@ jobs:
           
           # Create a ZIP archive containing the CSV
           cd /tmp/transx2gtfs
-          zip NaPTAN_data.zip NaPTAN.csv
+          zip NaPTAN_data.zip Stops.csv
           cd -
           
       - name: Convert to GTFS

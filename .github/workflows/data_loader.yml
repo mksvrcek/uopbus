@@ -28,7 +28,7 @@ jobs:
           # python -m pip install --upgrade pip
           pip install numpy==1.19.5
           pip install untangle==1.1.1
-          pip install pandas==0.24.1
+          pip install pandas==1.0.0
           pip install pyproj==2.1.3
           pip install transx2gtfs
 

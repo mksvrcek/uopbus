@@ -29,23 +29,26 @@ jobs:
       - name: Download new JSON data
         run: curl -L -o new_dataset.json "${{ secrets.timetableURL }}"
 
-      - name: Compare modified dates and conditionally download new file
+      - name: Compare modified dates using json_parse
         id: compare-dates
         run: |
-          # Extract modified dates from the new and existing JSON files
-          new_modified=$(jq -r '.modified' new_dataset.json)
-          existing_modified=$(jq -r '.modified' rawdata/dataset.json)
+          # Create json_parse.js file
+          echo "const fs = require('fs');" > json_parse.js
+          echo "const newDataset = JSON.parse(fs.readFileSync('new_dataset.json', 'utf8'));" >> json_parse.js
+          echo "const existingDataset = JSON.parse(fs.readFileSync('rawdata/dataset.json', 'utf8'));" >> json_parse.js
+          echo "const newModified = new Date(newDataset.modified);" >> json_parse.js
+          echo "const existingModified = new Date(existingDataset.modified);" >> json_parse.js
+          echo "if (newModified > existingModified) {" >> json_parse.js
+          echo "  console.log('New dataset is newer. Downloading the file.');" >> json_parse.js
+          echo "  console.log('newer=true');" >> json_parse.js
+          echo "} else {" >> json_parse.js
+          echo "  console.log('New dataset is not newer. Using existing data.');" >> json_parse.js
+          echo "  console.log('newer=false');" >> json_parse.js
+          echo "}" >> json_parse.js
 
-          # Compare the modified dates
-          if [[ "$new_modified" > "$existing_modified" ]]; then
-            echo "New dataset is newer. Downloading the file."
-            new_url=$(jq -r '.url' new_dataset.json)
-            curl -L -o input.zip "$new_url"
-            echo "newer=true" >> $GITHUB_ENV
-          else
-            echo "New dataset is not newer. Using existing data."
-            echo "newer=false" >> $GITHUB_ENV
-          fi
+          # Run json_parse.js and set environment variable
+          node json_parse.js | tee output.log
+          echo "$(grep 'newer=' output.log)" >> $GITHUB_ENV
 
       - name: Filter input files (U1/U2 only)
         if: env.newer == 'true'

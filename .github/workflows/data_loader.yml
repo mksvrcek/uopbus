@@ -26,7 +26,8 @@ jobs:
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install untangle pandas pyproj transx2gtfs
+          pip install pandas==1.0.0
+          pip install untangle pyproj transx2gtfs
 
       - name: Download input zip
         run: curl -L -o input.zip "${{ secrets.timetableURL }}"

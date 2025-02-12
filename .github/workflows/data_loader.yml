@@ -15,22 +15,16 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v4
+      - name: Set up Node.js 14.x
+        uses: actions/setup-node@v3
         with:
-          python-version: '3.8.15'
+          node-version: '14'
 
       - name: Install system dependencies
         run: sudo apt-get update && sudo apt-get install -y unzip zip
 
-      - name: Install Python dependencies
-        run: |
-          # python -m pip install --upgrade pip
-          pip install numpy==1.19.5
-          pip install untangle==1.2.1
-          pip install pandas==1.0.0
-          pip install pyproj==2.4.2
-          pip install transx2gtfs
+      - name: Install transxchange2gtfs CLI tool
+        run: npm install -g transxchange2gtfs
 
       - name: Download input zip
         run: curl -L -o input.zip "${{ secrets.timetableURL }}"
@@ -53,27 +47,13 @@ jobs:
           cd ..
           rm -rf tmp_input input.zip
           
-      - name: Prepare NaPTAN data directory
-        run: mkdir -p /tmp/transx2gtfs
-
-      - name: Download and package NaPTAN dataset
-        run: |
-          # Download the CSV file
-          curl -L -o /tmp/transx2gtfs/Stops.csv "https://beta-naptan.dft.gov.uk/Download/National/csv"
-          
-          # Create a ZIP archive containing the CSV
-          cd /tmp/transx2gtfs
-          zip NaPTAN_data.zip Stops.csv
-          cd -
-          
       - name: Convert to GTFS
-        run: |
-          python -c "import transx2gtfs; transx2gtfs.convert('filtered_input.zip', 'gtfs.zip')"
+        run: transxchange2gtfs filtered_input.zip gtfs-output.zip
 
       - name: Commit and push changes
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          git add gtfs.zip
+          git add gtfs-output.zip
           git commit -m "Update GTFS file (filtered U1/U2 sources)"
           git push

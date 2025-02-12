@@ -1,0 +1,446 @@
+{
+  "id": 4933,
+  "created": "2021-09-29T11:54:19+00:00",
+  "modified": "2025-02-12T04:20:21+00:00",
+  "operatorName": "First Bus",
+  "noc": [
+    "FABD",
+    "FYOR",
+    "FWYO",
+    "FBRA",
+    "FLDS",
+    "FHUD",
+    "FHAL",
+    "FSYO",
+    "FMAN",
+    "FLEI",
+    "FSMR",
+    "FECS",
+    "FESX",
+    "FDOR",
+    "RRAR",
+    "FTVA",
+    "FHAM",
+    "FHDO",
+    "FBRI",
+    "FCWL",
+    "FBOS",
+    "FPOT",
+    "GLFI",
+    "FSAV",
+    "FRBE",
+    "FNDE",
+    "FDVN",
+    "ABUS1",
+    "FCYM",
+    "FGLA",
+    "FSCE"
+  ],
+  "name": "First Bus_Fareham_Bridgemary_20211003_75",
+  "description": "FHAM HOEFORD",
+  "comment": "Automatically detected change in data set",
+  "status": "published",
+  "url": "https://data.bus-data.dft.gov.uk/timetable/dataset/4933/download/",
+  "extension": "zip",
+  "lines": [
+    "1",
+    "11",
+    "20",
+    "21",
+    "28",
+    "28A",
+    "3",
+    "5",
+    "9",
+    "9A",
+    "E1",
+    "E2",
+    "F1",
+    "F2",
+    "PC1",
+    "PC2",
+    "PR1",
+    "RED",
+    "SD4",
+    "SD5",
+    "SD7",
+    "U1",
+    "U2",
+    "X4",
+    "X5"
+  ],
+  "firstStartDate": "2021-10-03T00:00:00+00:00",
+  "firstEndDate": null,
+  "lastEndDate": null,
+  "adminAreas": [
+    {
+      "atco_code": "190",
+      "name": "Hampshire"
+    },
+    {
+      "atco_code": "199",
+      "name": "Portsmouth"
+    },
+    {
+      "atco_code": "198",
+      "name": "Southampton"
+    }
+  ],
+  "localities": [
+    {
+      "gazetteer_id": "E0012942",
+      "name": "Alverstoke"
+    },
+    {
+      "gazetteer_id": "N0081111",
+      "name": "Alver Village"
+    },
+    {
+      "gazetteer_id": "E0012944",
+      "name": "Anns Hill"
+    },
+    {
+      "gazetteer_id": "E0040714",
+      "name": "Baffins"
+    },
+    {
+      "gazetteer_id": "E0013031",
+      "name": "Bedhampton"
+    },
+    {
+      "gazetteer_id": "E0046906",
+      "name": "Bishops Waltham"
+    },
+    {
+      "gazetteer_id": "E0012946",
+      "name": "Bridgemary"
+    },
+    {
+      "gazetteer_id": "E0012947",
+      "name": "Brockhurst"
+    },
+    {
+      "gazetteer_id": "E0012896",
+      "name": "Burridge"
+    },
+    {
+      "gazetteer_id": "E0046787",
+      "name": "Bursledon"
+    },
+    {
+      "gazetteer_id": "E0012950",
+      "name": "Camdentown"
+    },
+    {
+      "gazetteer_id": "E0012898",
+      "name": "Catisfield"
+    },
+    {
+      "gazetteer_id": "E0041979",
+      "name": "Chapel"
+    },
+    {
+      "gazetteer_id": "N0080931",
+      "name": "City Centre"
+    },
+    {
+      "gazetteer_id": "E0012951",
+      "name": "Clayhall"
+    },
+    {
+      "gazetteer_id": "N0080967",
+      "name": "Continental Port"
+    },
+    {
+      "gazetteer_id": "E0040716",
+      "name": "Copnor"
+    },
+    {
+      "gazetteer_id": "E0040717",
+      "name": "Cosham"
+    },
+    {
+      "gazetteer_id": "E0040718",
+      "name": "Craneswater"
+    },
+    {
+      "gazetteer_id": "E0013574",
+      "name": "Crockerhill"
+    },
+    {
+      "gazetteer_id": "E0013576",
+      "name": "Curbridge"
+    },
+    {
+      "gazetteer_id": "E0040720",
+      "name": "Eastney"
+    },
+    {
+      "gazetteer_id": "E0012953",
+      "name": "Elson"
+    },
+    {
+      "gazetteer_id": "E0012900",
+      "name": "Fareham"
+    },
+    {
+      "gazetteer_id": "E0040721",
+      "name": "Farlington"
+    },
+    {
+      "gazetteer_id": "N0060822",
+      "name": "Fleetlands"
+    },
+    {
+      "gazetteer_id": "E0012954",
+      "name": "Fort Brockhurst"
+    },
+    {
+      "gazetteer_id": "E0012955",
+      "name": "Forton"
+    },
+    {
+      "gazetteer_id": "E0040722",
+      "name": "Fratton"
+    },
+    {
+      "gazetteer_id": "E0012903",
+      "name": "Funtley"
+    },
+    {
+      "gazetteer_id": "E0057430",
+      "name": "Gosport"
+    },
+    {
+      "gazetteer_id": "E0040724",
+      "name": "Guildhall"
+    },
+    {
+      "gazetteer_id": "E0012958",
+      "name": "Hardway"
+    },
+    {
+      "gazetteer_id": "E0012959",
+      "name": "Haslar"
+    },
+    {
+      "gazetteer_id": "E0013041",
+      "name": "Havant"
+    },
+    {
+      "gazetteer_id": "E0012905",
+      "name": "Heathfield"
+    },
+    {
+      "gazetteer_id": "E0012906",
+      "name": "Hill Head"
+    },
+    {
+      "gazetteer_id": "E0012907",
+      "name": "Hill Park"
+    },
+    {
+      "gazetteer_id": "E0040726",
+      "name": "Hilsea"
+    },
+    {
+      "gazetteer_id": "E0040728",
+      "name": "Kingston"
+    },
+    {
+      "gazetteer_id": "N0073883",
+      "name": "Knowle Village"
+    },
+    {
+      "gazetteer_id": "E0040729",
+      "name": "Landport"
+    },
+    {
+      "gazetteer_id": "E0012960",
+      "name": "Lee-on-the-Solent"
+    },
+    {
+      "gazetteer_id": "E0013046",
+      "name": "Leigh Park"
+    },
+    {
+      "gazetteer_id": "E0012913",
+      "name": "Locks Heath"
+    },
+    {
+      "gazetteer_id": "E0012914",
+      "name": "Lower Swanwick"
+    },
+    {
+      "gazetteer_id": "E0012876",
+      "name": "Lowford"
+    },
+    {
+      "gazetteer_id": "N0061062",
+      "name": "Meon Park"
+    },
+    {
+      "gazetteer_id": "E0040730",
+      "name": "Mile End"
+    },
+    {
+      "gazetteer_id": "E0040731",
+      "name": "Milton"
+    },
+    {
+      "gazetteer_id": "E0012962",
+      "name": "Newtown"
+    },
+    {
+      "gazetteer_id": "E0040732",
+      "name": "North End"
+    },
+    {
+      "gazetteer_id": "E0012887",
+      "name": "Old Netley"
+    },
+    {
+      "gazetteer_id": "E0040733",
+      "name": "Old Portsmouth"
+    },
+    {
+      "gazetteer_id": "E0012921",
+      "name": "Park Gate"
+    },
+    {
+      "gazetteer_id": "E0040734",
+      "name": "Paulsgrove"
+    },
+    {
+      "gazetteer_id": "E0012963",
+      "name": "Peel Common"
+    },
+    {
+      "gazetteer_id": "E0012922",
+      "name": "Portchester"
+    },
+    {
+      "gazetteer_id": "E0040736",
+      "name": "Portsea"
+    },
+    {
+      "gazetteer_id": "E0057225",
+      "name": "Portsmouth"
+    },
+    {
+      "gazetteer_id": "E0012965",
+      "name": "Privett"
+    },
+    {
+      "gazetteer_id": "E0013055",
+      "name": "Purbrook"
+    },
+    {
+      "gazetteer_id": "N0080880",
+      "name": "QA Hospital"
+    },
+    {
+      "gazetteer_id": "E0012966",
+      "name": "Rowner"
+    },
+    {
+      "gazetteer_id": "E0012926",
+      "name": "Sarisbury"
+    },
+    {
+      "gazetteer_id": "E0012929",
+      "name": "Segensworth"
+    },
+    {
+      "gazetteer_id": "E0046935",
+      "name": "Shedfield"
+    },
+    {
+      "gazetteer_id": "E0042023",
+      "name": "Sholing"
+    },
+    {
+      "gazetteer_id": "N0073196",
+      "name": "Somers Town"
+    },
+    {
+      "gazetteer_id": "N0077117",
+      "name": "Southampton City Centre"
+    },
+    {
+      "gazetteer_id": "E0040739",
+      "name": "Southsea"
+    },
+    {
+      "gazetteer_id": "E0040741",
+      "name": "Stamshaw"
+    },
+    {
+      "gazetteer_id": "N0080456",
+      "name": "St Marys"
+    },
+    {
+      "gazetteer_id": "E0012930",
+      "name": "Stubbington"
+    },
+    {
+      "gazetteer_id": "E0046940",
+      "name": "Swanmore"
+    },
+    {
+      "gazetteer_id": "E0012931",
+      "name": "Swanwick"
+    },
+    {
+      "gazetteer_id": "E0040742",
+      "name": "Tipner"
+    },
+    {
+      "gazetteer_id": "E0012933",
+      "name": "Titchfield"
+    },
+    {
+      "gazetteer_id": "E0012934",
+      "name": "Titchfield Common"
+    },
+    {
+      "gazetteer_id": "E0012935",
+      "name": "Titchfield Park"
+    },
+    {
+      "gazetteer_id": "E0012937",
+      "name": "Wallington"
+    },
+    {
+      "gazetteer_id": "E0013681",
+      "name": "Waltham Chase"
+    },
+    {
+      "gazetteer_id": "E0012938",
+      "name": "Warsash"
+    },
+    {
+      "gazetteer_id": "E0012940",
+      "name": "Whiteley"
+    },
+    {
+      "gazetteer_id": "E0046946",
+      "name": "Wickham"
+    },
+    {
+      "gazetteer_id": "N0060928",
+      "name": "Woodcot"
+    },
+    {
+      "gazetteer_id": "E0042037",
+      "name": "Woolston"
+    },
+    {
+      "gazetteer_id": "E0040745",
+      "name": "Wymering"
+    }
+  ],
+  "dqScore": "0.0%",
+  "dqRag": "unavailable",
+  "bodsCompliance": true
+}

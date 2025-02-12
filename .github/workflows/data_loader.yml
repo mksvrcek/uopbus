@@ -37,7 +37,7 @@ jobs:
           unzip input.zip -d tmp_input/
           cd tmp_input
           # Delete non-U1/U2 files
-          find . -type f ! -name 'U1*' ! -name 'U2*' -delete
+          find . -type f ! -name 'U1*' -delete
           # Remove empty directories
           find . -type d -empty -delete
           # Check if any files remain

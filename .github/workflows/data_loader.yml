@@ -1,1 +1,45 @@
+name: Convert TransXChange to GTFS
 
+on:
+  workflow_dispatch:
+    inputs:
+      url:
+        description: 'URL of the TransXChange zip file'
+        required: true
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Required to push changes back to the repository
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install untangle pandas pyproj transx2gtfs
+
+      - name: Download input zip
+        run: curl -L -o input.zip "${{ github.event.inputs.url }}"
+
+      - name: Convert to GTFS
+        run: |
+          python -c "import transx2gtfs; transx2gtfs.convert('input.zip', 'gtfs.zip')"
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add gtfs.zip
+          git commit -m "Update GTFS file"
+          git push

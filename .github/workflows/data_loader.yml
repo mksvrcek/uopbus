@@ -21,15 +21,34 @@ jobs:
           node-version: '14'
 
       - name: Install system dependencies
-        run: sudo apt-get update && sudo apt-get install -y unzip zip
+        run: sudo apt-get update && sudo apt-get install -y unzip zip jq
 
       - name: Install transxchange2gtfs CLI tool
         run: npm install -g transxchange2gtfs
 
-      - name: Download input zip
-        run: curl -L -o input.zip "${{ secrets.timetableURL }}"
+      - name: Download new JSON data
+        run: curl -L -o new_dataset.json "${{ secrets.timetableURL }}"
+
+      - name: Compare modified dates and conditionally download new file
+        id: compare-dates
+        run: |
+          # Extract modified dates from the new and existing JSON files
+          new_modified=$(jq -r '.modified' new_dataset.json)
+          existing_modified=$(jq -r '.modified' rawdata/dataset.json)
+
+          # Compare the modified dates
+          if [[ "$new_modified" > "$existing_modified" ]]; then
+            echo "New dataset is newer. Downloading the file."
+            new_url=$(jq -r '.url' new_dataset.json)
+            curl -L -o input.zip "$new_url"
+            echo "newer=true" >> $GITHUB_ENV
+          else
+            echo "New dataset is not newer. Using existing data."
+            echo "newer=false" >> $GITHUB_ENV
+          fi
 
       - name: Filter input files (U1/U2 only)
+        if: env.newer == 'true'
         run: |
           mkdir -p tmp_input
           unzip input.zip -d tmp_input/

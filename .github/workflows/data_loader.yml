@@ -37,7 +37,7 @@ jobs:
           unzip input.zip -d tmp_input/
           cd tmp_input
           # Delete non-U1/U2 files
-          find . -type f ! -name 'U1*' -delete
+          find . -type f ! -name 'U1*' ! -name 'U2*' -delete
           # Remove empty directories
           find . -type d -empty -delete
           # Check if any files remain
@@ -55,7 +55,7 @@ jobs:
       - name: Download and package NaPTAN dataset
         run: |
           # Download the CSV file
-          curl -L -o /tmp/transx2gtfs/NaPTAN.csv "https://beta-naptan.dft.gov.uk/Download/National/csv"
+          curl -L -o /tmp/transx2gtfs/Stops.csv "https://beta-naptan.dft.gov.uk/Download/National/csv"
           
           # Create a ZIP archive containing the CSV
           cd /tmp/transx2gtfs

@@ -47,6 +47,19 @@ jobs:
           cd ..
           rm -rf tmp_input input.zip
           
+      - name: Prepare NaPTAN data directory
+        run: mkdir -p /tmp/transx2gtfs
+
+      - name: Download and package NaPTAN dataset
+        run: |
+          # Download the CSV file
+          curl -L -o /tmp/Stops.csv "https://beta-naptan.dft.gov.uk/Download/National/csv"
+          
+          # Create a ZIP archive containing the CSV
+          cd /tmp/transx2gtfs
+          zip NaPTAN_data.zip Stops.csv
+          cd -
+          
       - name: Convert to GTFS
         run: transxchange2gtfs filtered_input.zip gtfs-output.zip
 

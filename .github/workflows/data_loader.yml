@@ -21,37 +21,15 @@ jobs:
           node-version: '14'
 
       - name: Install system dependencies
-        run: sudo apt-get update && sudo apt-get install -y unzip zip jq
+        run: sudo apt-get update && sudo apt-get install -y unzip zip
 
       - name: Install transxchange2gtfs CLI tool
         run: npm install -g transxchange2gtfs
 
-      - name: Download new JSON data
-        run: curl -L -o new_dataset.json "${{ secrets.timetableURL }}"
-
-      - name: Compare modified dates using json_parse
-        id: compare-dates
-        run: |
-          # Create json_parse.js file
-          echo "const fs = require('fs');" > json_parse.js
-          echo "const newDataset = JSON.parse(fs.readFileSync('new_dataset.json', 'utf8'));" >> json_parse.js
-          echo "const existingDataset = JSON.parse(fs.readFileSync('rawdata/dataset.json', 'utf8'));" >> json_parse.js
-          echo "const newModified = new Date(newDataset.modified);" >> json_parse.js
-          echo "const existingModified = new Date(existingDataset.modified);" >> json_parse.js
-          echo "if (newModified > existingModified) {" >> json_parse.js
-          echo "  console.log('New dataset is newer. Downloading the file.');" >> json_parse.js
-          echo "  console.log('newer=true');" >> json_parse.js
-          echo "} else {" >> json_parse.js
-          echo "  console.log('New dataset is not newer. Using existing data.');" >> json_parse.js
-          echo "  console.log('newer=false');" >> json_parse.js
-          echo "}" >> json_parse.js
-
-          # Run json_parse.js and set environment variable
-          node json_parse.js | tee output.log
-          echo "$(grep 'newer=' output.log)" >> $GITHUB_ENV
+      - name: Download input zip
+        run: curl -L -o input.zip "${{ secrets.timetableURL }}"
 
       - name: Filter input files (U1/U2 only)
-        if: env.newer == 'true'
         run: |
           mkdir -p tmp_input
           unzip input.zip -d tmp_input/

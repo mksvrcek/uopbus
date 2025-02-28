@@ -1,0 +1,8 @@
+{
+    "weekends": false,
+    "dates": [
+        {"from": "16 Sep 2024 00:00:00 GMT", "to": "20 Dec 2024 00:00:00 GMT"},
+        {"from": "13 Jan 2025 00:00:00 GMT", "to": "04 Apr 2025 00:00:00 GMT"},
+        {"from": "28 Apr 2025 00:00:00 GMT", "to": "06 Jul 2025 00:00:00 GMT"}
+    ]
+}

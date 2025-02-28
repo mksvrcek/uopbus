@@ -1,0 +1,26 @@
+{
+    "operation": {
+        "version": "1.0",
+        "lastChanged": "15 Oct 2024 00:00:00 GMT"
+    },
+    "u1timetable": {
+        "version": "1.0",
+        "lastChanged": "15 Oct 2024 00:00:00 GMT"
+    },
+    "u2ltimetable": {
+        "version": "1.0",
+        "lastChanged": "15 Oct 2024 00:00:00 GMT"
+    },
+    "u2utimetable": {
+        "version": "1.0",
+        "lastChanged": "15 Oct 2024 00:00:00 GMT"
+    },
+    "uoproutes": {
+        "version": "1.0",
+        "lastChanged": "15 Oct 2024 00:00:00 GMT"
+    },
+    "uopstops": {
+        "version": "2.0",
+        "lastChanged": "28 Feb 2025 00:00:00 GMT"
+    }
+}
